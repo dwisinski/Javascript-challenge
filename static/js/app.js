@@ -10,7 +10,6 @@ let resetButton = d3.select("#reset-btn");
 
 // function for building table
 function buildTable(data) {
-
   data.forEach((UFO) => {
     let row = tbody.append("tr");
     Object.entries(UFO).forEach(([key, value]) => {
@@ -18,7 +17,6 @@ function buildTable(data) {
       cell.text(value);
     });
   });
-
 }
 
 // function for filtering
@@ -33,7 +31,6 @@ function filterClick() {
   } else {
     var filteredData = tableData;
   }
-
   if (dateInput && stateInput !== "") {
     var filteredData = tableData.filter(value => value.datetime === dateInput && value.state === stateInput);
   } else {

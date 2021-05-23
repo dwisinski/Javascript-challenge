@@ -24,16 +24,14 @@ function filterClick() {
   d3.event.preventDefault();
   let dateInput = dateTime.property("value");
   let stateInput = state.property("value").toLowerCase();
-  if (dateInput !== "") {
+  if (dateInput && stateInput !== "") {
+    var filteredData = tableData.filter(value => value.datetime === dateInput && value.state === stateInput);
+  } else if (dateInput !== "") {
     var filteredData = tableData.filter(value => value.datetime === dateInput);
   } else if (stateInput !== "") {
     var filteredData = tableData.filter(value => value.state === stateInput);
   } else {
     var filteredData = tableData;
-  }
-  if (dateInput && stateInput !== "") {
-    var filteredData = tableData.filter(value => value.datetime === dateInput && value.state === stateInput);
-  } else {
   }
   tbody.html("");
   buildTable(filteredData);
